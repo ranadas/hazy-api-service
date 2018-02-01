@@ -7,9 +7,9 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class ScraperApiApplication  {
+public class HazelcastBootMain {
     public static void main(String[] args) {
-        SpringApplication.run(ScraperApiApplication.class, args);
+        SpringApplication.run(HazelcastBootMain.class, args);
     }
 
     @Bean
