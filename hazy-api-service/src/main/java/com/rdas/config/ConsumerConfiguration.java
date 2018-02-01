@@ -17,9 +17,9 @@ public class ConsumerConfiguration {
     @Bean
     public Config config() {
         Config config = new Config();
-        config.setInstanceName("cache-1");
+        config.setInstanceName("hazelcast-instance");
         config.getGroupConfig().setName("dev").setPassword("dev-pass");
-        ManagementCenterConfig mcc = new ManagementCenterConfig().setUrl("http://192.168.99.100:38080/mancenter").setEnabled(true);
+        ManagementCenterConfig mcc = new ManagementCenterConfig().setUrl("http://localhost:38080/mancenter").setEnabled(true);
         config.setManagementCenterConfig(mcc);
 
         SerializerConfig sc = new SerializerConfig().setTypeClass(Employee.class).setClass(EmployeeSerializer.class);
