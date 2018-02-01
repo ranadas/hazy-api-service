@@ -65,13 +65,13 @@ public class EmployeeService {
 
     public List<Employee> findByCompany(String company) {
         Predicate predicate = Predicates.equal("company", company);
-        logger.info("Employees cache find");
+        logger.info("Find from Employee cache company {}", company);
         Collection<Employee> ps = map.values(predicate);
-        logger.info("Employees cache size: " + ps.size());
+        logger.info("Employee cached size {} " , ps.size());
         if (ps.size() > 0) {
             return ps.stream().collect(Collectors.toList());
         }
-        logger.info("Employees find");
+        logger.info("Not found in Employee cache. Lookup repo. ");
         List<Employee> e = repository.findByCompany(company);
         logger.info("Employees size: " + e.size());
         e.parallelStream().forEach(it -> {
