@@ -35,9 +35,15 @@ jar {
     version = '1.0.0-SNAPSHOT'
 }
 
+configurations {
+    compile.exclude module: 'spring-boot-starter-tomcat'
+    compile.exclude group: 'org.apache.tomcat'
+}
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-undertow")
+
     compile("org.springframework.boot:spring-boot-starter-logging")
     testCompile("org.springframework.boot:spring-boot-starter-test")
     compile("org.projectlombok:lombok:1.16.8")

@@ -16,7 +16,7 @@ public class Api {
     @GetMapping(path = "/health", produces = "application/json")
     public ResponseEntity<?> checkHealth() {
         LocalDateTime timePoint = LocalDateTime.now();
-        return new ResponseEntity<Object>(String.format("Pinging on %s/%s/%s. Health OK", timePoint.getYear(), timePoint.getMonth(), timePoint.getDayOfMonth()), HttpStatus.OK);
+        return new ResponseEntity<Object>(String.format("Pinging on %s/%s/%s. Health OK\n", timePoint.getYear(), timePoint.getMonth(), timePoint.getDayOfMonth()), HttpStatus.OK);
     }
 
 }
