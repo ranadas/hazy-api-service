@@ -1,0 +1,30 @@
+# command t verify : docker-compose config
+# docker-compose -f docker-compose.yml up --build
+# docker-compose up -d --build
+#https://hub.docker.com/r/bitnami/rabbitmq/
+
+version: "3"
+services:
+  rabbitmq:
+    image: bitnami/rabbitmq
+    container_name: rabbitmq
+    hostname: rabbitmqhost
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+#    environment:
+#      - RABBITMQ_NODE_TYPE=stats
+#      - RABBITMQ_NODE_NAME=rabbit@stats
+#      - RABBITMQ_ERL_COOKIE=s3cr3tc00ki3
+    labels:
+      - rabbitmqhost
+  api-server:
+    container_name: scrapper-api
+    build:
+      context: api-services
+    links:
+      - rabbitmq
+  #links:
+#     - eureka
+#   environment:
+#      RABBIT_HOST: rabbit

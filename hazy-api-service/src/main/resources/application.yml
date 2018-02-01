@@ -1,0 +1,16 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /hz
+spring:
+  application:
+    name: hze-apiserver
+  profiles:
+    active: local
+---
+server:
+  port: 8080
+#  servlet:
+#    context-path: /rmqapi
+spring:
+  profiles: local
