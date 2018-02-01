@@ -3,7 +3,7 @@ server:
   servlet:
     context-path: /hz
 spring:
-  profiles.active: default
+  profiles.active: test
   application:
     name: hze-apiserver
 logging:
@@ -23,3 +23,32 @@ server:
 spring:
   profiles: dev
   profiles.include: default
+---
+server:
+  port: 8089
+  servlet:
+    context-path: /hzt
+spring:
+  profiles: test
+  profiles.include: default
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:h2:mem:orcldb;database_to_upper=true;DB_CLOSE_DELAY=-1;MODE=MYSQL
+    test-on-borrow: true
+    validation-query: SELECT 1 FROM dual
+    hikari:
+      maximum-pool-size: 10
+      username: root
+      password: Pluto2011
+      driver-class-name: org.h2.Driver
+      pool-name: api-cp
+      idle-timeout: 10
+  jpa:
+    database: H2
+    show-sql: true
+    properties:
+      hibernate.id.new_generator_mappings: false
+      hibernate.cache.use_second_level_cache: false
+      hibernate.cache.use_query_cache: false
+      hibernate.generate_statistics: false
+      hibernate.cache.region.factory_class: io.github.jhipster.config.jcache.NoDefaultJCacheRegionFactory
