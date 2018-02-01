@@ -3,14 +3,23 @@ server:
   servlet:
     context-path: /hz
 spring:
+  profiles.active: default
   application:
     name: hze-apiserver
-  profiles:
-    active: local
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+
+---
+spring:
+  profiles: default
 ---
 server:
-  port: 8080
-#  servlet:
-#    context-path: /rmqapi
+  port: 8088
+  servlet:
+    context-path: /hzd
+
 spring:
-  profiles: local
+  profiles: dev
+  profiles.include: default

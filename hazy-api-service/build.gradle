@@ -39,7 +39,6 @@ jar {
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-logging")
-    compile("com.fasterxml.jackson.core:jackson-databind:2.6.0")
     testCompile("org.springframework.boot:spring-boot-starter-test")
     compile("org.projectlombok:lombok:1.16.8")
 }
