@@ -15,8 +15,36 @@
 version: "3"
 services:
   api1:
-    container_name: hazelc-api
+    container_name: hazelc-api1
     build:
       context: hazy-api-service
     ports:
-      - "8089:8089"
+      - "8082:8089"
+  api2:
+    container_name: hazelc-api2
+    build:
+      context: hazy-api-service
+    ports:
+      - "8083:8089"
+  haprxy: 
+    container_name: haproxy-api
+    build:  
+      load-bal
+    links:
+       - api1     
+       - api2
+    ports:
+      - "80:80"
+      - "1936:1936"
+  
+
+
+  # lb-haproxy:
+  #   container_name: haproxy-hazelapi
+  #   image: dockercloud/haproxy:latest
+  #   links:
+  #     - api1     
+  #     - api2
+  #   ports:  
+  #     - "80:80"
+  #     - "1936:1936"
