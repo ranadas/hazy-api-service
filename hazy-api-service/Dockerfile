@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-MAINTAINER Rana Das <rana@iconictranslations.com>
+MAINTAINER Rana Das <rana.pratap.das@gmail.com>
 
 RUN apt-get update \
   && apt-get install -y vim   \
