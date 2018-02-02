@@ -34,11 +34,11 @@ RUN export JAVA_HOME
 RUN	mkdir /api
 WORKDIR /api
 
-ADD build/libs/hazy-api-service.jar  boot-api.jar
+ADD build/libs/haze-api-server.jar  boot-api.jar
 RUN chmod 777 -R /api
 
-ENTRYPOINT ["java" ,"-Djava.security.egd=file:/dev/./urandom" ,"-Dspring.profiles.active=dockerred ", "-jar" ,"boot-api.jar"]
-EXPOSE 8080
+ENTRYPOINT ["java" ,"-Djava.security.egd=file:/dev/./urandom" ,"-Dspring.profiles.active=test ", "-jar" ,"boot-api.jar"]
+EXPOSE 8089
 
 
 

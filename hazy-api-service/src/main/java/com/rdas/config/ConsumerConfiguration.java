@@ -19,6 +19,11 @@ public class ConsumerConfiguration {
         Config config = new Config();
         config.setInstanceName("hazelcast-instance");
         config.getGroupConfig().setName("dev").setPassword("dev-pass");
+        /*
+        JoinConfig joinConfig = config.getNetworkConfig().getJoin();
+        joinConfig.getMulticastConfig().setEnabled(false);
+        joinConfig.getTcpIpConfig().setEnabled(true).setMembers(singletonList("127.0.0.1"));
+         */
         ManagementCenterConfig mcc = new ManagementCenterConfig().setUrl("http://localhost:38080/mancenter").setEnabled(true);
         config.setManagementCenterConfig(mcc);
 
@@ -26,4 +31,36 @@ public class ConsumerConfiguration {
         config.getSerializationConfig().addSerializerConfig(sc);
         return config;
     }
+    /*
+    //https://github.com/armdev/hazelcast-spring-boot/blob/master/src/main/java/io/project/app/HazelcastConfig.java
+    @Bean
+    public HazelcastInstance hazelcastInstance() {
+        Config config = new Config();
+        config.setProperty("hazelcast.jmx", "true");
+        LocalListConfig listConfig = new LocalListConfig();
+        listConfig.setMaxSize(50);
+        listConfig.setTimeToLiveSeconds(10);
+        listConfig.setBackupCount(0);
+        listConfig.setName("contactList");
+
+        config.addListConfig(listConfig);
+
+        ContactMapConfig contactMapConfig = new ContactMapConfig();
+
+        contactMapConfig.setMaxSizeConfig(new MaxSizeConfig(200, MaxSizeConfig.MaxSizePolicy.FREE_HEAP_SIZE));
+        contactMapConfig.setTimeToLiveSeconds(10);
+        contactMapConfig.setBackupCount(0);
+        contactMapConfig.setName("contactMap");
+        contactMapConfig.setEvictionPolicy(EvictionPolicy.LRU);
+        contactMapConfig.setEvictionPercentage(25);
+        contactMapConfig.setInMemoryFormat(InMemoryFormat.BINARY);
+        contactMapConfig.setMergePolicy("com.hazelcast.map.merge.PassThroughMergePolicy");
+
+        config.addMapConfig(contactMapConfig);
+
+        HazelcastInstance instance = Hazelcast.newHazelcastInstance(config);
+
+        return instance;
+    }
+     */
 }
