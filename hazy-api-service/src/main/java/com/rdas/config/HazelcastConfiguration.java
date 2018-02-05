@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class ConsumerConfiguration {
+public class HazelcastConfiguration {
     /*
     declare cluster names and password credentials, connection parameters to the Hazelcast Management Center,
     and entity serialization configuration.
